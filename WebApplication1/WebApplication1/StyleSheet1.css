@@ -1,0 +1,33 @@
+﻿body {
+    font-family: Helvica Verdana Cambria;
+    font-size: medium;
+
+}
+
+.description {
+    padding: 10px 10px 10px 10px;
+}
+
+select {
+    padding: 10px 10px 10px 10px;
+}
+
+table, th, td {
+ width: 100%;
+ border-collapse: collapse;
+ border: 1px solid black;
+}
+
+th {
+ color: white;
+ background-color: #4CAF50;
+ text-align: center;
+}
+
+th, td {
+    padding: 10px; 
+    text-align: left;
+}
+
+tr:hover {background-color: #f5f5f5}
+tr:nth-child(even) {background-color: #f2f2f2}
