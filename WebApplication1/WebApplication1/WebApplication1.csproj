@@ -72,6 +72,7 @@
     <Content Include="images\imageButtons\green.png" />
     <Content Include="images\imageButtons\orange.png" />
     <Content Include="images\imageButtons\red.png" />
+    <Content Include="imageupload.aspx" />
     <Content Include="qrcode.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
@@ -86,6 +87,13 @@
       <DependentUpon>buttons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common.cs" />
+    <Compile Include="imageupload.aspx.cs">
+      <DependentUpon>imageupload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="imageupload.aspx.designer.cs">
+      <DependentUpon>imageupload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="qrcode.aspx.cs">
       <DependentUpon>qrcode.aspx</DependentUpon>
@@ -119,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\qrCodes\" />
+    <Folder Include="images\uploads\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
