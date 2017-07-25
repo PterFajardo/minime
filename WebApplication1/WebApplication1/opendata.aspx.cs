@@ -31,11 +31,10 @@ namespace WebApplication1
         {
             initiateCSS();
             //getData();
-            createImageButtons();
             
             if (!Page.IsPostBack)
             {
-                //getParentData();
+                getParentData();
             }
 
             
@@ -461,73 +460,6 @@ namespace WebApplication1
             txtSearch.Text = string.Empty;
             getParentData();
         }
-
-        private void createImageButtons()
-        {
-            var divMyButtons = FindControl("myButtons");
-
-            if (divMyButtons != null)
-            {
-                var imageLocation = "~/images/imageButtons/";
-                string[] fileEntries = Directory.GetFiles(Server.MapPath(imageLocation));
-                foreach (string fileName in fileEntries)
-                {
-                    FileInfo info = new FileInfo(fileName);
-                    var name = info.Name;
-                    var imageButton = new ImageButton();
-                    imageButton.ID = "btn" + Common.UppercaseFirst(name.Substring(0, name.IndexOf('.')));
-                    imageButton.ImageUrl = imageLocation + name;
-                    imageButton.Click += new ImageClickEventHandler(this.imgButton_Click);
-                    imageButton.AlternateText = name;
-                    imageButton.ToolTip = name;
-                    divMyButtons.Controls.Add(imageButton);
-                }
-            }
-        }
-
-        protected void imgButton_Click(object sender, ImageClickEventArgs e)
-        {
-            var imgButton = (ImageButton)sender;
-            if (string.IsNullOrEmpty(imgButton.CssClass))
-            {
-                imgButton.CssClass = "inactive";
-            }
-            else
-            {
-                imgButton.CssClass = string.Empty;
-            }
-            
-          
-        }
-
-        private void processBarcode(string filename)
-        {
-            QRCodeEncoder encoder = new QRCodeEncoder();
-            encoder.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.H;
-            encoder.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
-
-            var x = qrText.Text.Trim().Replace("\\r\\n", System.Environment.NewLine);
-            
-            Bitmap img = encoder.Encode(x);
-
-            img.Save(Server.MapPath(filename), ImageFormat.Jpeg);
-            
-            qrImage.ImageUrl = filename;
-
-        }
-
-        protected void updateButton_Click(object sender, EventArgs e)
-        {
-            var filename = "~/images/qrCodes/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
-
-            processBarcode(filename);
-
-            QRCodeDecoder dec = new QRCodeDecoder();
-            var image = System.Drawing.Image.FromFile(Server.MapPath(filename));
-            qrDecode.Text = (dec.Decode(new QRCodeBitmapImage(image as Bitmap)));
-        }
-
-
 
     }
 }

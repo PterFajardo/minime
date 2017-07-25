@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebApplication1.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="opendata.aspx.cs" Inherits="WebApplication1.WebForm1" %>
 
 <!DOCTYPE html>
 
@@ -9,26 +9,6 @@
     
 <body>
     <form id="form1" runat="server">
-    <div>
-        <table>
-			<tr>
-				<td><asp:Image ID="qrImage" runat="server" /></td>
-				<td>
-                    <asp:TextBox ID="qrText" runat="server" TextMode="MultiLine" />
-                    <asp:Button ID="updateButton" runat="server" Text="Update" OnClick="updateButton_Click" />
-                    <asp:TextBox ID="qrDecode" runat="server" TextMode="MultiLine" />
-				</td>
-			</tr>
-		</table>
-	</div>
-
-    <div id="myButtons" class="myButtons" runat="server"> 
-        <%--<asp:ImageButton ID="imgButton1" ImageUrl="~/images/imageButtons/blue.png" OnClick="imgButton_Click" runat="server" />
-        <asp:ImageButton ID="imgButton2" ImageUrl="~/images/imageButtons/red.png" OnClick="imgButton_Click" runat="server" />
-        <asp:ImageButton ID="imgButton3" ImageUrl="~/images/imageButtons/green.png" OnClick="imgButton_Click" runat="server" />
-        <asp:ImageButton ID="imgButton4" ImageUrl="~/images/imageButtons/orange.png" OnClick="imgButton_Click" runat="server" />--%>
-    </div>
-
     <div>
         Search&nbsp;&nbsp;<asp:TextBox ID="txtSearch" runat="server"></asp:TextBox>
         <asp:Button ID="btnSeach" OnClick="btnSeach_Click" Text="Search" runat="server" />

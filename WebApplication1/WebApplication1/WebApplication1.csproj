@@ -66,24 +66,40 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="buttons.aspx" />
     <Content Include="images\imageButtons\blue.png" />
     <Content Include="images\imageButtons\gray.png" />
     <Content Include="images\imageButtons\green.png" />
     <Content Include="images\imageButtons\orange.png" />
     <Content Include="images\imageButtons\red.png" />
+    <Content Include="qrcode.aspx" />
     <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="opendata.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="buttons.aspx.cs">
+      <DependentUpon>buttons.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="buttons.aspx.designer.cs">
+      <DependentUpon>buttons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="qrcode.aspx.cs">
+      <DependentUpon>qrcode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="qrcode.aspx.designer.cs">
+      <DependentUpon>qrcode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="opendata.aspx.cs">
+      <DependentUpon>opendata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="opendata.aspx.designer.cs">
+      <DependentUpon>opendata.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
