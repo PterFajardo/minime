@@ -22,58 +22,22 @@ namespace WebApplication1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// barcodeTextLabel control.
+        /// qrImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label barcodeTextLabel;
+        protected global::System.Web.UI.WebControls.Image qrImage;
         
         /// <summary>
-        /// barcodeText control.
+        /// qrText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox barcodeText;
-        
-        /// <summary>
-        /// barcodeSymbologyLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label barcodeSymbologyLabel;
-        
-        /// <summary>
-        /// barcodeSymbology control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList barcodeSymbology;
-        
-        /// <summary>
-        /// barcodeScaleLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label barcodeScaleLabel;
-        
-        /// <summary>
-        /// barcodeScale control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox barcodeScale;
+        protected global::System.Web.UI.WebControls.TextBox qrText;
         
         /// <summary>
         /// updateButton control.
@@ -83,6 +47,15 @@ namespace WebApplication1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button updateButton;
+        
+        /// <summary>
+        /// qrDecode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox qrDecode;
         
         /// <summary>
         /// myButtons control.

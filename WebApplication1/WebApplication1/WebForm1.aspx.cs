@@ -13,8 +13,10 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using System.Net.Http;
-
-
+using MessagingToolkit.QRCode.Codec;
+using System.Drawing;
+using System.Drawing.Imaging;
+using MessagingToolkit.QRCode.Codec.Data;
 
 
 
@@ -33,7 +35,7 @@ namespace WebApplication1
             
             if (!Page.IsPostBack)
             {
-                getParentData();
+                //getParentData();
             }
 
             
@@ -497,6 +499,35 @@ namespace WebApplication1
             
           
         }
+
+        private void processBarcode(string filename)
+        {
+            QRCodeEncoder encoder = new QRCodeEncoder();
+            encoder.QRCodeErrorCorrect = QRCodeEncoder.ERROR_CORRECTION.H;
+            encoder.QRCodeEncodeMode = QRCodeEncoder.ENCODE_MODE.BYTE;
+
+            var x = qrText.Text.Trim().Replace("\\r\\n", System.Environment.NewLine);
+            
+            Bitmap img = encoder.Encode(x);
+
+            img.Save(Server.MapPath(filename), ImageFormat.Jpeg);
+            
+            qrImage.ImageUrl = filename;
+
+        }
+
+        protected void updateButton_Click(object sender, EventArgs e)
+        {
+            var filename = "~/images/qrCodes/" + DateTime.Now.ToString("yyyyMMddHHmmssffff") + ".jpg";
+
+            processBarcode(filename);
+
+            QRCodeDecoder dec = new QRCodeDecoder();
+            var image = System.Drawing.Image.FromFile(Server.MapPath(filename));
+            qrDecode.Text = (dec.Decode(new QRCodeBitmapImage(image as Bitmap)));
+        }
+
+
 
     }
 }

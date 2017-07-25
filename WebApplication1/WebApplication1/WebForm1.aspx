@@ -10,25 +10,13 @@
 <body>
     <form id="form1" runat="server">
     <div>
-		<table>
+        <table>
 			<tr>
-				<td><asp:Label ID="barcodeTextLabel" runat="server" Text="Barcode Text" /></td>
-				<td><asp:TextBox ID="barcodeText" runat="server" Text="1234" /></td>
-			</tr>
-			<tr>
-				<td><asp:Label ID="barcodeSymbologyLabel" runat="server" Text="Barcode Symbology" /></td>
-				<td><asp:DropDownList ID="barcodeSymbology" runat="server" /></td>
-			</tr>
-			<tr>
-				<td><asp:Label ID="barcodeScaleLabel" runat="server" Text="Barcode Scale" /></td>
-				<td><asp:TextBox ID="barcodeScale" runat="server" Text="1" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><asp:Button ID="updateButton" runat="server" Text="Update" OnClick="updateButton_Click" /></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<barcode:BarcodeLabel ID="barcodeRender" runat="server" Text="1234" BarcodeEncoding="Code128" BarMinWidth="1" BarMaxWidth="2" BarMinHeight="30" BarMaxHeight="40" />
+				<td><asp:Image ID="qrImage" runat="server" /></td>
+				<td>
+                    <asp:TextBox ID="qrText" runat="server" TextMode="MultiLine" />
+                    <asp:Button ID="updateButton" runat="server" Text="Update" OnClick="updateButton_Click" />
+                    <asp:TextBox ID="qrDecode" runat="server" TextMode="MultiLine" />
 				</td>
 			</tr>
 		</table>

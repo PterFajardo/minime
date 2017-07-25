@@ -8,12 +8,14 @@ C:\ifactor\akin\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj
 C:\ifactor\akin\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\ifactor\akin\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\ifactor\akin\WebApplication1\WebApplication1\bin\SODA.pdb
+C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\WebApplication1.dll
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\WebApplication1.pdb
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\Newtonsoft.Json.dll
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\SODA.dll
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\SODA.pdb
+C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\SODA.xml
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\Newtonsoft.Json.xml
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
 C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
-C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\ifactor\akin\myProject\oData\WebApplication1\WebApplication1\bin\MessagingToolkit.QRCode.dll
