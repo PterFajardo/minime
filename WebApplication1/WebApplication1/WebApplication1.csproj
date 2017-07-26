@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="buttons.aspx" />
+    <Content Include="gridsample.aspx" />
+    <Content Include="images\persons\blue.png" />
+    <Content Include="images\persons\gray.png" />
+    <Content Include="images\persons\green.png" />
+    <Content Include="images\persons\orange.png" />
+    <Content Include="images\persons\red.png" />
     <Content Include="images\imageButtons\blue.png" />
     <Content Include="images\imageButtons\gray.png" />
     <Content Include="images\imageButtons\green.png" />
@@ -87,6 +93,13 @@
       <DependentUpon>buttons.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common.cs" />
+    <Compile Include="gridsample.aspx.cs">
+      <DependentUpon>gridsample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gridsample.aspx.designer.cs">
+      <DependentUpon>gridsample.aspx</DependentUpon>
+    </Compile>
     <Compile Include="imageupload.aspx.cs">
       <DependentUpon>imageupload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
