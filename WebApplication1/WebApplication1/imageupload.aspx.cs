@@ -18,6 +18,39 @@ namespace WebApplication1
 
         }
 
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+            //var photo = imageToByteArray(System.Drawing.Image.FromFile(Path.GetDirectoryName(fileUpload.FileName)));
+            if (FileUploadControl.HasFile)
+            {
+                try
+                {
+                    if (FileUploadControl.PostedFile.ContentType == "image/jpeg")
+                    {
+                        if (FileUploadControl.PostedFile.ContentLength < 102400)
+                        {
+                            string filename = Path.GetFileName(FileUploadControl.FileName);
+
+                            byte[] imageByte = FileUploadControl.FileBytes;
+                            FileUploadControl.SaveAs(Server.MapPath("~/images/uploads/") + filename);
+                            StatusLabel.Text = "Upload status: File uploaded!";
+
+                            uploadedImage.ImageUrl = "~/images/uploads/" + filename;
+                            dbImage.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(imageByte, 0, imageByte.Length);
+                        }
+                        else
+                            StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
+                    }
+                    else
+                        StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                }
+            }
+        }
+
         // convert image to byte array
         public byte[] imageToByteArray(System.Drawing.Image imageIn)
         {
@@ -34,35 +67,7 @@ namespace WebApplication1
             return returnImage;
         }
 
-        protected void UploadButton_Click(object sender, EventArgs e)
-        {
-            //var photo = imageToByteArray(System.Drawing.Image.FromFile(Path.GetDirectoryName(fileUpload.FileName)));
-            if (FileUploadControl.HasFile)
-            {
-                try
-                {
-                    if (FileUploadControl.PostedFile.ContentType == "image/jpeg")
-                    {
-                        if (FileUploadControl.PostedFile.ContentLength < 102400)
-                        {
-                            string filename = Path.GetFileName(FileUploadControl.FileName);
-                            FileUploadControl.SaveAs(Server.MapPath("~/images/uploads/") + filename);
-                            StatusLabel.Text = "Upload status: File uploaded!";
-
-                            uploadedImage.ImageUrl = "~/images/uploads/" + filename;
-                        }
-                        else
-                            StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
-                    }
-                    else
-                        StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
-                }
-                catch (Exception ex)
-                {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
-                }
-            }
-        }
+        
       
     }
 }

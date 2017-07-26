@@ -15,6 +15,7 @@
         <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
         <div style="padding:50px">
             <asp:Image ID="uploadedImage" runat="server" />
+            <asp:Image ID="dbImage" runat="server" />
         </div>
     </div>
     </form>
