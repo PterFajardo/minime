@@ -18,7 +18,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using MessagingToolkit.QRCode.Codec.Data;
 
-
+//use the site below for reference
+//http://docs.socratadiscovery.apiary.io/#reference/0/text-search/text-search-api
 
 namespace WebApplication1
 {
