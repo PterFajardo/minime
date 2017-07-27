@@ -68,9 +68,11 @@
   <ItemGroup>
     <Content Include="buttons.aspx" />
     <Content Include="gridsample.aspx" />
+    <Content Include="images\persons\blue-noimage.png" />
     <Content Include="images\persons\blue.png" />
     <Content Include="images\persons\gray.png" />
     <Content Include="images\persons\green.png" />
+    <Content Include="images\persons\noimage.jpg" />
     <Content Include="images\persons\orange.png" />
     <Content Include="images\persons\red.png" />
     <Content Include="images\imageButtons\blue.png" />

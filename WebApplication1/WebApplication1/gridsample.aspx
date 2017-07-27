@@ -9,10 +9,46 @@
         div {
             padding: 10px;
         }
+        input {
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <div>
+            <table border="1">
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <h2>Create Person</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <div><asp:Image ID="personImage" ImageUrl="~/images/persons/blue-noimage.png" runat="server" Height="100px" Width="95px" /></div>
+                            <asp:FileUpload ID="imageUploader" runat="server" Width="80px" onchange="this.form.submit()"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            First Name:&nbsp;<asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+                        </div>
+                        <div>
+                            Last Name:&nbsp;<asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right" >
+                        <div><asp:Button ID="btnCreate" Text="Create" runat="server" OnClick="btnCreate_Click" /></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
         <div><asp:LinkButton ID="lnkTable" Text="table" runat="server" />&nbsp;|&nbsp;<asp:LinkButton ID="lnkGrid" Text="grid" runat="server" /></div>
         <div>
             <asp:ListView ID="lstData" runat="server">
@@ -47,7 +83,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <asp:Image ID="picture" runat="server" ImageUrl='<%#Eval("Picture") %>' Height="30px" />
+                                    <asp:Image ID="picture" runat="server" ImageUrl='<%#Eval("Picture") %>' Height="30px" width="30px"/>
                                 </td>
                                 <td>
                                     <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
@@ -83,7 +119,7 @@
                         <table>
                             <tr>
                                 <td>
-                                    <asp:Image ID="picture" runat="server" ImageUrl='<%#Eval("Picture") %>' />
+                                    <asp:Image ID="picture" runat="server" ImageUrl='<%#Eval("Picture") %>' Height="100px" Width="95px" />
                                 </td>
                             </tr>
                             <tr>

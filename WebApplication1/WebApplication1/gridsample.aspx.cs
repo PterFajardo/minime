@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -15,10 +16,22 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            PERSONS = new List<Person>();
+
             if (!Page.IsPostBack)
             {
-                createData();
+                Session["persons"] = createData();
                 bindData();
+            }
+
+            if (IsPostBack && imageUploader.PostedFile != null)
+            {
+                if (imageUploader.PostedFile.FileName.Length > 0)
+                {
+                    string filename = DateTime.Now.ToString("yyyyMMddHHmmssffff") + imageUploader.FileName.Substring(imageUploader.FileName.IndexOf('.'));
+                    imageUploader.SaveAs(Server.MapPath("~/images/uploads/") + filename);
+                    personImage.ImageUrl = "~/images/uploads/" + filename;
+                }
             }
         }
 
@@ -31,10 +44,8 @@ namespace WebApplication1
             grpData.DataBind();
         }
 
-        private void createData()
+        private List<Person> createData()
         {
-            PERSONS = new List<Person>();
-
             var p = new Person
             {
                 Id = 1,
@@ -84,6 +95,8 @@ namespace WebApplication1
             };
 
             PERSONS.Add(p);
+
+            return PERSONS;
         }
 
         protected void CurrentRowTextBox_OnTextChanged(object sender, EventArgs e)
@@ -93,6 +106,30 @@ namespace WebApplication1
             pager.SetPageProperties(Convert.ToInt32(t.Text) - 1, pager.PageSize, true);
         }
 
+        protected void btnCreate_Click(object sender, EventArgs e)
+        {
+            PERSONS = (List<Person>)Session["persons"];
+
+            var p = new Person
+            {
+                Id = 0,
+                Picture = personImage.ImageUrl,
+                FirstName = txtFirstName.Text.Trim(),
+                LastName = txtLastName.Text.Trim()
+            };
+
+            PERSONS.Add(p);
+
+            resetInputForm();
+            bindData();
+        }
+
+        private void resetInputForm()
+        {
+            personImage.ImageUrl = "~/images/persons/blue-noimage.png";
+            txtFirstName.Text = string.Empty;
+            txtLastName.Text = string.Empty;
+        }
     }
 
     public class Person

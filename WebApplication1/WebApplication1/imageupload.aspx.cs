@@ -20,7 +20,6 @@ namespace WebApplication1
 
         protected void UploadButton_Click(object sender, EventArgs e)
         {
-            //var photo = imageToByteArray(System.Drawing.Image.FromFile(Path.GetDirectoryName(fileUpload.FileName)));
             if (FileUploadControl.HasFile)
             {
                 try
