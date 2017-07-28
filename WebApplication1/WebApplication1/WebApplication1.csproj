@@ -87,6 +87,7 @@
     <Content Include="opendata.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Person.cs" />
     <Compile Include="buttons.aspx.cs">
       <DependentUpon>buttons.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

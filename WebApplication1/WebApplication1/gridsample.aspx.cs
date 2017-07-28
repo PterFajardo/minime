@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplication1.App_Code;
 
 //https://msdn.microsoft.com/en-us/library/bb398790.aspx#Code Examples
 
@@ -16,7 +17,7 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            PERSONS = new List<Person>();
+            PERSONS = new List<Person>();  
 
             if (!Page.IsPostBack)
             {
@@ -109,16 +110,29 @@ namespace WebApplication1
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             PERSONS = (List<Person>)Session["persons"];
-
-            var p = new Person
+            Button btn = (Button)sender;
+            if (!btn.Text.ToLower().Equals("edit"))
             {
-                Id = 0,
-                Picture = personImage.ImageUrl,
-                FirstName = txtFirstName.Text.Trim(),
-                LastName = txtLastName.Text.Trim()
-            };
+                var p = new Person
+                {
+                    Id = 0,
+                    Picture = personImage.ImageUrl,
+                    FirstName = txtFirstName.Text.Trim(),
+                    LastName = txtLastName.Text.Trim()
+                };
 
-            PERSONS.Add(p);
+                PERSONS.Add(p);
+            }
+            else 
+            {
+                var person = (Person)Session["EditedRecord"];
+                person.Picture = personImage.ImageUrl;
+                person.FirstName = txtFirstName.Text.Trim();
+                person.LastName = txtLastName.Text.Trim();
+
+                btnCreate.Text = "Create";
+                Session.Remove("EditedRecord");
+            }
 
             resetInputForm();
             bindData();
@@ -130,13 +144,64 @@ namespace WebApplication1
             txtFirstName.Text = string.Empty;
             txtLastName.Text = string.Empty;
         }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void lstData_DeleteItem(int id)
+        {
+            var x = string.Empty;
+        }
+
+        protected void lstData_ItemEditing(object sender, ListViewEditEventArgs e)
+        {
+            ListViewItem item = lstData.Items[e.NewEditIndex];
+            Image image = (Image)item.FindControl("picture");
+            Label firstLabel = (Label)item.FindControl("FirstNameLabel");
+            Label LastLabel = (Label)item.FindControl("LastNameLabel");
+            txtFirstName.Text = firstLabel.Text;
+            txtLastName.Text = LastLabel.Text;
+            personImage.ImageUrl = image.ImageUrl;
+            btnCreate.Text = "Edit";
+
+            getCurrentRecord(Convert.ToInt32(lstData.DataKeys[e.NewEditIndex].Value));
+        }
+
+        protected void lstData_ItemUpdating(object sender, ListViewUpdateEventArgs e)
+        {
+            
+
+            var id  = e.Keys[0];
+            var person = PERSONS.FirstOrDefault(x => x.Id.Equals(id));
+
+            if (person != null)
+            {
+                //var list = lstData.Items[e.N
+                var txtFirst = (TextBox)FindControl("txtEFirstName");
+                var txtLast = (TextBox)FindControl("txtELastName");
+                person.FirstName = txtFirst.Text.Trim();
+                person.LastName = txtLast.Text.Trim();
+
+                bindData();
+
+                Session["persons"] = PERSONS;
+            }
+        }
+
+        private void getCurrentRecord(int id)
+        {
+            PERSONS = (List<Person>)Session["persons"];
+            Session["EditedRecord"] = PERSONS.FirstOrDefault(x => x.Id.Equals(id));
+        }
+
+        protected void lstData_ItemDeleting(object sender, ListViewDeleteEventArgs e)
+        {
+            PERSONS = (List<Person>)Session["persons"];
+            var p = PERSONS.FirstOrDefault(x => x.Id.Equals(Convert.ToInt32(e.Keys[0])));
+            
+            if (((List<Person>)Session["persons"]).Remove(p))
+            {
+                bindData();
+            }
+        }
     }
 
-    public class Person
-    {
-        public int Id { get; set; }
-        public string Picture { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
 }

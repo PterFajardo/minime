@@ -9,6 +9,7 @@
         div {
             padding: 10px;
         }
+
         input {
             padding: 10px;
         }
@@ -26,8 +27,9 @@
                 <tr>
                     <td>
                         <div>
-                            <div><asp:Image ID="personImage" ImageUrl="~/images/persons/blue-noimage.png" runat="server" Height="100px" Width="95px" /></div>
-                            <asp:FileUpload ID="imageUploader" runat="server" Width="80px" onchange="this.form.submit()"/>
+                            <div>
+                                <asp:Image ID="personImage" ImageUrl="~/images/persons/blue-noimage.png" runat="server" Height="100px" Width="95px" /></div>
+                            <asp:FileUpload ID="imageUploader" runat="server" Width="80px" onchange="this.form.submit()" />
                         </div>
                     </td>
                     <td>
@@ -40,8 +42,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="text-align: right" >
-                        <div><asp:Button ID="btnCreate" Text="Create" runat="server" OnClick="btnCreate_Click" /></div>
+                    <td colspan="2" style="text-align: right">
+                        <div>
+                            <asp:Button ID="btnCreate" Text="Create" runat="server" OnClick="btnCreate_Click" /></div>
                     </td>
                 </tr>
             </table>
@@ -49,14 +52,15 @@
 
 
 
-        <div><asp:LinkButton ID="lnkTable" Text="table" runat="server" />&nbsp;|&nbsp;<asp:LinkButton ID="lnkGrid" Text="grid" runat="server" /></div>
         <div>
-            <asp:ListView ID="lstData" runat="server">
+            <asp:LinkButton ID="lnkTable" Text="table" runat="server" />&nbsp;|&nbsp;<asp:LinkButton ID="lnkGrid" Text="grid" runat="server" /></div>
+        <div>
+            <asp:ListView ID="lstData" runat="server" OnItemEditing="lstData_ItemEditing" OnItemDeleting="lstData_ItemDeleting" DataKeyNames="Id">
                 <LayoutTemplate>
-                    <table runat="server" id="table1" >
-                        <tr runat="server" id="itemPlaceholder" ></tr>
+                    <table runat="server" id="table1">
+                        <tr runat="server" id="itemPlaceholder"></tr>
                     </table>
-                   <%-- <asp:DataPager runat="server" ID="lstDataPager" PageSize="2">
+                    <%-- <asp:DataPager runat="server" ID="lstDataPager" PageSize="2">
                         <Fields>
                             <asp:TemplatePagerField>
                               <PagerTemplate>
@@ -77,31 +81,36 @@
                           </Fields>
                     </asp:DataPager>--%>
                 </LayoutTemplate>
-                  <ItemTemplate>
+                <ItemTemplate>
                     <tr id="Tr1" runat="server">
-                      <td id="Td1" runat="server">
-                        <table>
-                            <tr>
-                                <td>
-                                    <asp:Image ID="picture" runat="server" ImageUrl='<%#Eval("Picture") %>' Height="30px" width="30px"/>
-                                </td>
-                                <td>
-                                    <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
-                                    <asp:Label ID="LastNameLabel" runat="server" Text='<%#Eval("LastName") %>' />
-                                </td>
-                            </tr>
-                        </table>
-                          
-                      </td>
+                        <td id="Td1" runat="server">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <asp:Image ID="picture" runat="server" ImageUrl='<%#Eval("Picture") %>' Height="30px" Width="30px" />
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="FirstNameLabel" runat="server" Text='<%#Eval("FirstName") %>' />
+                                        <asp:Label ID="LastNameLabel" runat="server" Text='<%#Eval("LastName") %>' />
+                                    </td>
+                                    <td>
+                                        <asp:LinkButton ID="lnkEditBtn" runat="server" Text="Edit" CommandName="Edit"></asp:LinkButton>
+                                        &nbsp;|&nbsp;
+                                    <asp:LinkButton ID="lnkDeleteBtn" runat="server" Text="Delete" CommandName="Delete"></asp:LinkButton>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </td>
                     </tr>
-                  </ItemTemplate>
+                </ItemTemplate>
             </asp:ListView>
         </div>
         <div>
             <asp:ListView ID="grpData" runat="server" GroupItemCount="3" DataKeyNames="Id">
                 <LayoutTemplate>
-                    <table runat="server" id="table1" >
-                        <tr runat="server" id="groupPlaceholder" ></tr>
+                    <table runat="server" id="table1">
+                        <tr runat="server" id="groupPlaceholder"></tr>
                     </table>
                     <%--<asp:DataPager runat="server" ID="DataPager" PageSize="2">
                       <Fields>
@@ -110,12 +119,12 @@
                     </asp:DataPager>--%>
                 </LayoutTemplate>
                 <GroupTemplate>
-                    <tr runat="server" id="personRow" style="height:80px">
-                      <td runat="server" id="itemPlaceholder"></td>
+                    <tr runat="server" id="personRow" style="height: 80px">
+                        <td runat="server" id="itemPlaceholder"></td>
                     </tr>
-                  </GroupTemplate>
-                  <ItemTemplate>
-                      <td runat="server">
+                </GroupTemplate>
+                <ItemTemplate>
+                    <td runat="server">
                         <table>
                             <tr>
                                 <td>
@@ -129,10 +138,10 @@
                                 </td>
                             </tr>
                         </table>
-                      </td>
-                  </ItemTemplate>
+                    </td>
+                </ItemTemplate>
             </asp:ListView>
-        </div>      
+        </div>
     </form>
 </body>
 </html>
